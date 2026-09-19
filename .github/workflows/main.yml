@@ -23,17 +23,17 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Recreate Android Project Files
-        run: flutter create . --platforms=android
+      - name: Create Android Structure
+        run: flutter create --org com.kabir.worldpoll .
 
       - name: Get Dependencies
         run: flutter pub get
 
-      - name: Build Android APK
-        run: flutter build apk --release
+      - name: Build Debug APK
+        run: flutter build apk --debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: WorldPoll-Release-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: WorldPoll-Debug-APK
+          path: build/app/outputs/flutter-apk/app-debug.apk
